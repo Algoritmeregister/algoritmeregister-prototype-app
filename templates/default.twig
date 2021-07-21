@@ -29,7 +29,7 @@
                         <td>{{ item.naam }}</td>
                         <td>{{ item.type }}</td>
                         <td><div class="warning-icon">!</div> {{ item.herziening }}</td>
-                        <td><a href="#">download .yml</a></td>
+                        <td><a href="/data/{{ item.id }}" target="_blank">.json data</a></td>
                         <td><a href="/details/{{ item.id }}">details →</a></td>
                     </tr>
                 {% endfor %}
