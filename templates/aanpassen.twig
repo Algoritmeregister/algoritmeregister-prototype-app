@@ -12,22 +12,26 @@
             <h1>{{ title }}</h1>
             <p>{{ description }}</p>
         </header>
-        
-        {% for categorie, group in grouped %}
-            <section>
-                <div class="bol">Stap {{ loop.index }}</div>
-                <h2>{{ categorie }}</h2>
-                {% for item in group %}
-                    <h3>{{ item.naam }}</h3>
-                    <p class="omschrijving">{{ item.omschrijving }}</p>
-                    <textarea>{{ item.waarde }}</textarea>
-                {% endfor %}
-            </section>
-        {% endfor %}
 
-        <section style="text-align: right">
-            <a href="/details/1234"><button>Aanpassingen opslaan</button></a>
-            <!--<button>Annuleren</button>-->
-        </seciton>
+        <form method="POST" target="/aanpassen/{{ id }}">
+        
+            {% for categorie, group in grouped %}
+                <section>
+                    <div class="bol">Stap {{ loop.index }}</div>
+                    <h2>{{ categorie }}</h2>
+                    {% for item in group %}
+                        <h3>{{ item.naam }}</h3>
+                        <p class="omschrijving">{{ item.omschrijving }}</p>
+                        <textarea>{{ item.waarde }}</textarea>
+                    {% endfor %}
+                </section>
+            {% endfor %}
+
+            <section style="text-align: right">
+                <button type="submit">Aanpassingen opslaan</button>
+                <!--<button>Annuleren</button>-->
+            </seciton>
+
+        </form>
     </body>
 </html>

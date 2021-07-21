@@ -72,4 +72,11 @@ $app->get('/aanpassen/{id}', function (Request $request, Response $response, $ar
     ]);
 });
 
+$app->post('/aanpassen/{id}', function (Request $request, Response $response, $args) {
+    $view = Twig::fromRequest($request);
+    $id = $args['id'];
+    $data = json_decode(file_get_contents(__DIR__ . "/../storage/{$id}." . md5($id) . ".json"));
+    return $response->withHeader("Location", "/details/{$id}")->withStatus(303);
+});
+
 $app->run();
