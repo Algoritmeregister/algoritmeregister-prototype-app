@@ -17,9 +17,11 @@ $app->add(TwigMiddleware::create($app, $twig));
 
 $app->get('/', function (Request $request, Response $response, $args) {
     $view = Twig::fromRequest($request);
+    $items = json_decode(file_get_contents(__DIR__ . "/../storage/index.json"));
     return $view->render($response, 'default.twig', [
         'title' => 'Algoritmeregister',
-        'description' => 'We werken aan een overzicht van algoritmes, een Algoritmeregister. Door in deze registratie aspecten van algoritmes op een begrijpelijke manier vast te leggen kunnen wij transparantie bieden en verantwoording af leggen. In het register kun je technische elementen terugvinden, zoals de dataverwerking of broncode, maar bijvoorbeeld ook afspraken tussen overheden en leveranciers of bijvoorbeeld een beschrijving van de werking van het algoritme.'
+        'description' => 'We werken aan een overzicht van algoritmes, een Algoritmeregister. Door in deze registratie aspecten van algoritmes op een begrijpelijke manier vast te leggen kunnen wij transparantie bieden en verantwoording af leggen. In het register kun je technische elementen terugvinden, zoals de dataverwerking of broncode, maar bijvoorbeeld ook afspraken tussen overheden en leveranciers of bijvoorbeeld een beschrijving van de werking van het algoritme.',
+        'items' => $items
     ]);
 });
 
@@ -40,17 +42,33 @@ $app->get('/aanmelden', function (Request $request, Response $response, $args) {
 
 $app->get('/details/{id}', function (Request $request, Response $response, $args) {
     $view = Twig::fromRequest($request);
+    $id = $args['id'];
+    $metadata = json_decode(file_get_contents(__DIR__ . "/../storage/{$id}." . md5($id) . ".json"));
+    $grouped = [];
+    foreach ($metadata as $item) {
+        $grouped[$item->categorie][] = $item;
+    }
     return $view->render($response, 'details.twig', [
+        'id' => $id,
         'title' => 'Parkeercontrole',
-        'description' => 'Om Amsterdam leefbaar en toegankelijk te houden, mag er maar een beperkt aantal auto’s in de stad parkeren. De gemeente controleert of een geparkeerde auto het recht heeft om geparkeerd te staan, dus of iemand parkeergeld heeft betaald of een parkeervergunning heeft. Om efficiënter te werken doen we die controle met scanauto’s. Daarmee controleren we momenteel meer dan 150.000 officiële parkeerplaatsen in Amsterdam.'
+        'description' => 'Om Amsterdam leefbaar en toegankelijk te houden, mag er maar een beperkt aantal auto’s in de stad parkeren. De gemeente controleert of een geparkeerde auto het recht heeft om geparkeerd te staan, dus of iemand parkeergeld heeft betaald of een parkeervergunning heeft. Om efficiënter te werken doen we die controle met scanauto’s. Daarmee controleren we momenteel meer dan 150.000 officiële parkeerplaatsen in Amsterdam.',
+        'grouped' => $grouped
     ]);
 });
 
 $app->get('/aanpassen/{id}', function (Request $request, Response $response, $args) {
     $view = Twig::fromRequest($request);
+    $id = $args['id'];
+    $metadata = json_decode(file_get_contents(__DIR__ . "/../storage/{$id}." . md5($id) . ".json"));
+    $grouped = [];
+    foreach ($metadata as $item) {
+        $grouped[$item->categorie][] = $item;
+    }
     return $view->render($response, 'aanpassen.twig', [
+        'id' => $id,
         'title' => 'Parkeercontrole',
-        'description' => 'Om Amsterdam leefbaar en toegankelijk te houden, mag er maar een beperkt aantal auto’s in de stad parkeren. De gemeente controleert of een geparkeerde auto het recht heeft om geparkeerd te staan, dus of iemand parkeergeld heeft betaald of een parkeervergunning heeft. Om efficiënter te werken doen we die controle met scanauto’s. Daarmee controleren we momenteel meer dan 150.000 officiële parkeerplaatsen in Amsterdam.'
+        'description' => 'Om Amsterdam leefbaar en toegankelijk te houden, mag er maar een beperkt aantal auto’s in de stad parkeren. De gemeente controleert of een geparkeerde auto het recht heeft om geparkeerd te staan, dus of iemand parkeergeld heeft betaald of een parkeervergunning heeft. Om efficiënter te werken doen we die controle met scanauto’s. Daarmee controleren we momenteel meer dan 150.000 officiële parkeerplaatsen in Amsterdam.',
+        'grouped' => $grouped
     ]);
 });
 

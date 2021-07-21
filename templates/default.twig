@@ -22,33 +22,18 @@
                     <th>Herziening</th>
                     <th></th>
                 </tr>
-                <tr>
-                    <td>Gemeente Amsterdam</td>
-                    <td>Ruimte en Economie</td>
-                    <td>Parkeercontrole</td>
-                    <td>Beeldherkenning</td>
-                    <td><div class="warning-icon">!</div> 01-05-2021</td>
-                    <td><a href="#">download .yml</a></td>
-                    <td><a href="/details/1234">details →</a></td>
-                </tr>
-                <tr>
-                    <td>Gemeente Amsterdam</td>
-                    <td>Dienstverlening en Informatie, Ruimte en Economie</td>
-                    <td>Public Eye</td>
-                    <td>Crowd Monitoring</td>
-                    <td>21-02-2022</td>
-                    <td><a href="#">download .yml</a></td>
-                    <td><a href="/details/1234">details →</a></td>
-                </tr>
-                <tr>
-                    <td>Provincie Zuid-Holland</td>
-                    <td>Infrastructuur</td>
-                    <td>iVRI</td>
-                    <td>Regelsysteem</td>
-                    <td>04-08-2022</td>
-                    <td><a href="#">download .yml</a></td>
-                    <td><a href="/details/1234">details →</a></td>
-                </tr>
+                {% for item in items %}
+                    <tr>
+                        <td>{{ item.organisatie }}</td>
+                        <td>{{ item.afdeling }}</td>
+                        <td>{{ item.naam }}</td>
+                        <td>{{ item.type }}</td>
+                        <td><div class="warning-icon">!</div> {{ item.herziening }}</td>
+                        <td><a href="#">download .yml</a></td>
+                        <td><a href="/details/{{ item.id }}">details →</a></td>
+                    </tr>
+                {% endfor %}
+                
             </table>
         </main>
     </body>
