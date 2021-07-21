@@ -27,11 +27,13 @@
         <main>
             <div class="bol">Stap 2</div>
             <h2>Is het antwoord op alle bovenstaande vragen "ja"?</h2>
-            <label><span>Organisatie</span> <input type="text"></input></label><br>
-            <label><span>Afdeling</span> <input type="text"></input></label><br>
-            <label><span>Naam</span> <input type="text"></input></label><br>
-            <label><span>E-mailadres contactpersoon</span> <input type="email"></input></label><br>
-            <a href="/aanpassen/1234"><button>Aanmelden</button></a>
+            <form method="POST" action="/aanmelden">
+                <label><span>Organisatie</span> <input type="text"></input></label><br>
+                <label><span>Afdeling</span> <input type="text"></input></label><br>
+                <label><span>Naam</span> <input type="text"></input></label><br>
+                <label><span>E-mailadres contactpersoon</span> <input type="email"></input></label><br>
+                <button type="submit">Aanmelden</button>
+            </form>
         </main>
     </body>
 </html>
