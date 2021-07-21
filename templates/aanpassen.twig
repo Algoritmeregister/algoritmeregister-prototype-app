@@ -22,7 +22,7 @@
                     {% for item in group %}
                         <h3>{{ item.naam }}</h3>
                         <p class="omschrijving">{{ item.omschrijving }}</p>
-                        <textarea>{{ item.waarde }}</textarea>
+                        <textarea name="{{ item.eigenschap }}">{{ item.waarde }}</textarea>
                     {% endfor %}
                 </section>
             {% endfor %}
