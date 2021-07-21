@@ -54,9 +54,21 @@ $app->post('/aanmelden', function (Request $request, Response $response, $args) 
     foreach ($metadata as $field) {
         $indexed[$field->eigenschap] = $field;
     }
+
+    $data = $request->getParsedBody();
+    $organisatie = $data["organisatie"];
+    $afdeling = $data["afdeling"];
+    $naam = $data["naam"];
+    $contact = $data["contact"];
+    $type = "Onbekend";
+    $herziening = date("d-m-Y");
+
+    $indexed["naam"] = $naam;
     file_put_contents(__DIR__ . "/../storage/{$uuid}." . md5($uuid) . ".json", json_encode($indexed));
-    $txt = "\"{$uuid}\",\"\",\"\",\"\",\"\",\"\"";
+
+    $txt = "\"{$uuid}\",\"{$organisatie}\",\"{$afdeling}\",\"{$naam}\",\"{$contact}\",\"{$herziening}\"";
     $myfile = file_put_contents(__DIR__ . "/../storage/index.csv", $txt.PHP_EOL, FILE_APPEND);
+    
     return $response->withHeader("Location", "/details/{$uuid}")->withStatus(303);
 });
 
