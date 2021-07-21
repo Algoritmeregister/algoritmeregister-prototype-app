@@ -56,6 +56,12 @@ $app->get('/details/{id}', function (Request $request, Response $response, $args
     ]);
 });
 
+$app->get('/data/{id}', function (Request $request, Response $response, $args) {
+    $id = $args['id'];
+    header("Content-type: text/json");
+    readfile(__DIR__ . "/../storage/{$id}." . md5($id) . ".json");
+});
+
 $app->get('/aanpassen/{id}', function (Request $request, Response $response, $args) {
     $view = Twig::fromRequest($request);
     $id = $args['id'];
