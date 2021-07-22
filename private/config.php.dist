@@ -1,0 +1,6 @@
+<?php
+
+$config = [
+    'mailgun-url' => 'https://api.eu.mailgun.net/',
+    'mailgun-key' => 'key-'
+];

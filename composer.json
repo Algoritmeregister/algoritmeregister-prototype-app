@@ -3,6 +3,9 @@
         "slim/slim": "4.*",
         "guzzlehttp/psr7": "^1.8",
         "http-interop/http-factory-guzzle": "^1.0",
-        "slim/twig-view": "^3.2"
+        "slim/twig-view": "^3.2",
+        "mailgun/mailgun-php": "^3.5",
+        "kriswallsmith/buzz": "^1.2",
+        "nyholm/psr7": "^1.4"
     }
 }
