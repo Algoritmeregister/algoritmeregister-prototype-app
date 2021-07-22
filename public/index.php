@@ -65,6 +65,11 @@ $app->post('/aanmelden', function (Request $request, Response $response, $args) 
     $type = "Onbekend";
     $herziening = date("d-m-Y");
 
+    $maildomain = array_pop(explode('@', $contact));
+    if (!in_array($maildomain, $config['known-maildomains'])) {
+        return $response->withHeader("Location", "/aanmelden")->withStatus(303);
+    }
+
     $indexed["naam"]["waarde"] = $naam;
     file_put_contents(__DIR__ . "/../storage/{$uuid}." . md5($uuid) . ".json", json_encode($indexed));
 

@@ -2,5 +2,8 @@
 
 $config = [
     'mailgun-url' => 'https://api.eu.mailgun.net/',
-    'mailgun-key' => 'key-'
+    'mailgun-key' => 'key-',
+    'known-orgs' => [
+        'maildomain.extension'
+    ]
 ];
