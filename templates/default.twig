@@ -19,6 +19,7 @@
                     <th>Afdeling</th>
                     <th>Naam</th>
                     <th>Type</th>
+                    <th>Status</th>
                     <th>Herziening</th>
                     <th></th>
                 </tr>
@@ -28,6 +29,7 @@
                         <td>{{ item.afdeling }}</td>
                         <td>{{ item.naam }}</td>
                         <td>{{ item.type }}</td>
+                        <td>{{ item.status }}</td>
                         <td><div class="warning-icon">!</div> {{ item.herziening }}</td>
                         <td><a href="/data/{{ item.id }}" target="_blank">.json data</a></td>
                         <td><a href="/details/{{ item.id }}">details →</a></td>

@@ -63,6 +63,7 @@ $app->post('/aanmelden', function (Request $request, Response $response, $args) 
     $naam = $data["naam"];
     $contact = $data["contact"];
     $type = "onbekend";
+    $status = "aangemeld";
     $herziening = date("d-m-Y");
 
     $maildomain = array_pop(explode('@', $contact));
@@ -73,7 +74,7 @@ $app->post('/aanmelden', function (Request $request, Response $response, $args) 
     $indexed["naam"]["waarde"] = $naam;
     file_put_contents(__DIR__ . "/../storage/{$uuid}." . md5($uuid) . ".json", json_encode($indexed));
 
-    $txt = "\"{$uuid}\",\"{$organisatie}\",\"{$afdeling}\",\"{$naam}\",\"{$type}\",\"{$herziening}\",\"{$contact}\"";
+    $txt = "\"{$uuid}\",\"{$organisatie}\",\"{$afdeling}\",\"{$naam}\",\"{$type}\",\"{$status}\",\"{$herziening}\",\"{$contact}\"";
     $myfile = file_put_contents(__DIR__ . "/../storage/index.csv", $txt.PHP_EOL, FILE_APPEND);
 
     $mgClient = Mailgun::create($config["mailgun-key"], $config["mailgun-url"]);
