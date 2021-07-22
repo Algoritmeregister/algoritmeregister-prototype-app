@@ -80,8 +80,8 @@ $app->post('/aanmelden', function (Request $request, Response $response, $args) 
     $result = $mgClient->messages()->send("algoritmeregister.nl", array(
         'from'	=> 'Algoritmeregister <no-reply@algoritmeregister.nl>',
         'to'	=> $contact,
-        'subject' => 'Detailpagina Algoritmeregister aangemaakt',
-        'text'	=> 'https://www.algoritmeregister.nl/details/' . $uuid
+        'subject' => "Detailpagina {$naam} beschikbaar",
+        'text'	=> "Je bent aangemeld als beheerder voor de detailpagina van {$naam} in het Algoritmeregister. Op https://www.algoritmeregister.nl/details/{$uuid} kun je de gegevens bekijken en bijwerken."
     ));
     
     return $response->withHeader("Location", "/details/{$uuid}")->withStatus(303);
