@@ -1,4 +1,4 @@
-# Algoritmeregister
+# Algoritmeregister prototype
 
 ## Installatie
 
