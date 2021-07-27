@@ -8,6 +8,10 @@
 4. chown www-data:www-data storage/index.csv
 5. cp private/config.php.dist private/config.php
 
+## Lokaal draaien
+
+  $ docker-compose up
+
 ## Status
 
 Dit is een werkend prototype. Niet geschikt voor productie doeleinden.
