@@ -1,4 +1,4 @@
-# Algoritmeregister prototype
+# Algoritmeregister Prototype App
 
 ## Installatie
 
