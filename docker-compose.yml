@@ -1,9 +1,5 @@
 version: '3.3'
 
-volumes:
-    logs:
-        driver: local
-
 services:
     slim:
         image: php:7-alpine
@@ -15,4 +11,8 @@ services:
             - 8080:8080
         volumes:
             - .:/var/www
-            - logs:/var/www/logs
+        networks:
+            - algoritmeregister-prototype-app_default
+networks:
+    algoritmeregister-prototype-app_default:
+        external: true
