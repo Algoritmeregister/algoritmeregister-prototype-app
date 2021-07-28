@@ -63,7 +63,8 @@ $app->post('/aanmelden', function (Request $request, Response $response, $args) 
     $token = $toepassing["token"]["waarde"];
 
     $baseUrl = $request->getUri()->getScheme() . "://" . $request->getUri()->getHost();
-    if (($port = $request->getUri()->getPort()) !== 80) {
+    $port = $request->getUri()->getPort();
+    if ($port && $port !== 80) {
         $baseUrl .= ":" . $port;
     }
 
