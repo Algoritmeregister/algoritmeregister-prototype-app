@@ -4,13 +4,13 @@
     <body class="default-background">
         {% include 'nav.twig' %}
         <p style="margin: 20px">
-            <a href="/details/{{ id }}" style="float: left">← aanpassen annuleren zonder opslaan</a>
+            <a href="/details/{{ id }}?token={{ token }}" style="float: left">← aanpassen annuleren zonder opslaan</a>
         </p>
         <header class="default-color" style="padding: 20px">
             <h1>{{ title }}</h1>
         </header>
 
-        <form method="POST" target="/aanpassen/{{ id }}">
+        <form method="POST" target="/aanpassen/{{ id }}?token={{ token }}">
         
             {% for categorie, group in grouped %}
                 <section>

@@ -5,7 +5,9 @@
         {% include 'nav.twig' %}
         <p style="margin: 20px">
             <a href="/" style="float: left">← terug naar het register</a>
-            <a href="/aanpassen/{{ id }}" style="float: left; margin-left: 1em">aanpassen</a>
+            {% if token %}
+            <a href="/aanpassen/{{ id }}?token={{ token }}" style="float: left; margin-left: 1em">aanpassen</a>
+            {% endif %}
         </p>
         <header class="default-color" style="padding: 20px">
             <h1>{{ title }}</h1>

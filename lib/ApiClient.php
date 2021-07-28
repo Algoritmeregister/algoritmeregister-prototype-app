@@ -35,7 +35,7 @@ class ApiClient
         return json_decode(file_get_contents($this->_apiUrl . "/toepassingen/{$id}"), true);
     }
 
-    public function updateToepassing($id, $data)
+    public function updateToepassing($id, $data, $token)
     {
         $context = stream_context_create([
             'http' => [
@@ -44,6 +44,6 @@ class ApiClient
                 'content' => http_build_query($data)
             ]
         ]);
-        return json_decode(file_get_contents($this->_apiUrl . "/toepassingen/{$id}", false, $context), true);
+        return json_decode(file_get_contents($this->_apiUrl . "/toepassingen/{$id}?token={$token}", false, $context), true);
     }
 }

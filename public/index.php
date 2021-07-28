@@ -82,6 +82,7 @@ $app->post('/aanmelden', function (Request $request, Response $response, $args) 
 $app->get('/details/{id}', function (Request $request, Response $response, $args) use ($algoritmeregister) {
     $view = Twig::fromRequest($request);
     $id = $args['id'];
+    $token = $request->getQueryParams()["token"];
     $toepassing = $algoritmeregister->readToepassing($id);
     $grouped = [];
     foreach ($toepassing as $field) {
@@ -91,6 +92,7 @@ $app->get('/details/{id}', function (Request $request, Response $response, $args
     }
     return $view->render($response, 'details.twig', [
         'id' => $id,
+        'token' => $token,
         'title' => $toepassing["naam"]["waarde"],
         'description' => $toepassing["beschrijving"]["waarde"],
         'grouped' => $grouped
@@ -100,6 +102,7 @@ $app->get('/details/{id}', function (Request $request, Response $response, $args
 $app->get('/aanpassen/{id}', function (Request $request, Response $response, $args) use ($algoritmeregister) {
     $view = Twig::fromRequest($request);
     $id = $args['id'];
+    $token = $request->getQueryParams()["token"];
     $toepassing = $algoritmeregister->readToepassing($id);
     $grouped = [];
     foreach ($toepassing as $field) {
@@ -107,6 +110,7 @@ $app->get('/aanpassen/{id}', function (Request $request, Response $response, $ar
     }
     return $view->render($response, 'aanpassen.twig', [
         'id' => $id,
+        'token' => $token,
         'title' => $toepassing["naam"]["waarde"],
         'description' => $toepassing["beschrijving"]["waarde"],
         'grouped' => $grouped
@@ -115,7 +119,8 @@ $app->get('/aanpassen/{id}', function (Request $request, Response $response, $ar
 
 $app->post('/aanpassen/{id}', function (Request $request, Response $response, $args) use ($algoritmeregister) {
     $id = $args['id'];
-    $algoritmeregister->updateToepassing($id, $request->getParsedBody());
+    $token = $request->getQueryParams()["token"];
+    $algoritmeregister->updateToepassing($id, $request->getParsedBody(), $token);
     return $response->withHeader("Location", "/details/{$id}")->withStatus(303);
 });
 
