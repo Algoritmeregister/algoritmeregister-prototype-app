@@ -1,4 +1,6 @@
-# Algoritmeregister prototype
+# Algoritmeregister Prototype App
+
+https://github.com/Algoritmeregister/algoritmeregister-prototype
 
 ## Installatie
 
