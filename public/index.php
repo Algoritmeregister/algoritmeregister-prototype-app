@@ -64,7 +64,7 @@ $app->post('/aanmelden', function (Request $request, Response $response, $args) 
 
     $baseUrl = $request->getUri()->getScheme() . "://" . $request->getUri()->getHost();
     $port = $request->getUri()->getPort();
-    if ($port && $port !== 80) {
+    if ($port && $port !== "80") {
         $baseUrl .= ":" . $port;
     }
 
