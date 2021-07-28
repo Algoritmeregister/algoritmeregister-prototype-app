@@ -21,8 +21,24 @@
                     <h2>{{ categorie }}</h2>
                     {% for item in group %}
                         <h3>{{ item.naam }}</h3>
-                        <p class="omschrijving">{{ item.omschrijving }}</p>
-                        <textarea name="{{ item.eigenschap }}">{{ item.waarde }}</textarea>
+                        {% if item.type == "bool" %}
+                            <p>
+                                <select name="{{ item.eigenschap }}">
+                                    <option></option>
+                                    <option {% if item.waarde == "ja" %}selected{% endif %}>ja</option>
+                                    <option {% if item.waarde == "nee" %}selected{% endif %}>nee</option>
+                                </select>
+                            </p>
+                        {% elseif item.type == "datum" %}
+                            <p class="omschrijving">{{ item.omschrijving }}</p>
+                            <p><input type="date" name="{{ item.eigenschap }}" value="{{ item.waarde }}"></p>
+                        {% elseif item.type == "url" %}
+                            <p class="omschrijving">{{ item.omschrijving }}</p>
+                            <p><input type="text" name="{{ item.eigenschap }}" value="{{ item.waarde }}"></p>
+                        {% else %}
+                            <p class="omschrijving">{{ item.omschrijving }}</p>
+                            <textarea name="{{ item.eigenschap }}">{{ item.waarde }}</textarea>
+                        {% endif %}
                     {% endfor %}
                 </section>
             {% endfor %}

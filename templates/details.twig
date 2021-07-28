@@ -21,7 +21,15 @@
                 {% for item in group %}
                     <h3>{{ item.naam }}</h3>
                     <p class="omschrijving">{{ item.omschrijving }}</p>
-                    <p>{{ item.waarde }}</p>
+                    {% if item.type == "bool" %}
+                        <p>{{ item.waarde }}</p>
+                    {% elseif item.type == "datum" %}
+                        <p>{{ item.waarde }}</p>
+                    {% elseif item.type == "url" %}
+                        <p><a href="{{ item.waarde }}" target="_blank">{{ item.waarde }}</a></p>
+                    {% else %}
+                        <p>{{ item.waarde }}</p>
+                    {% endif %}
                 {% endfor %}
             </section>
         {% endfor %}
