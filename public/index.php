@@ -59,7 +59,7 @@ $app->post('/aanmelden', function (Request $request, Response $response, $args) 
     $toepassing = $algoritmeregister->createToepassing($data);
     
     $naam = $toepassing["naam"]["waarde"];
-    $uuid = $toepassing["uuid"]["waarde"];
+    $id = $toepassing["id"]["waarde"];
     $token = $toepassing["token"]["waarde"];
 
     $mgClient = Mailgun::create($config["mailgun-key"], $config["mailgun-url"]);
@@ -67,10 +67,10 @@ $app->post('/aanmelden', function (Request $request, Response $response, $args) 
         'from'	=> 'Algoritmeregister <no-reply@algoritmeregister.nl>',
         'to'	=> $contact,
         'subject' => "Detailpagina toepassing \"{$naam}\" beschikbaar",
-        'text'	=> "Je bent aangemeld als beheerder voor de detailpagina van de toepassing \"{$naam}\" in het Algoritmeregister. Op https://www.algoritmeregister.nl/details/{$uuid}?token={$token} kun je de gegevens bekijken en bijwerken."
+        'text'	=> "Je bent aangemeld als beheerder voor de detailpagina van de toepassing \"{$naam}\" in het Algoritmeregister. Op https://www.algoritmeregister.nl/details/{$id}?token={$token} kun je de gegevens bekijken en bijwerken."
     ));
     
-    return $response->withHeader("Location", "/details/{$uuid}")->withStatus(303);
+    return $response->withHeader("Location", "/details/{$id}")->withStatus(303);
 });
 
 $app->get('/details/{id}', function (Request $request, Response $response, $args) use ($algoritmeregister) {
