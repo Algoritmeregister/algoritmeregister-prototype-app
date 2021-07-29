@@ -15,11 +15,11 @@
         <section>
             <h2>Log</h2>
             {% for event in events %}
-                <p>
-                {% for i, j in event %}
-                    {{ i }} <b>{{ j }}</b><br>
-                {% endfor %}
-                </p>
+                {% if event.attribute == "waarde" %}
+                    <p>
+                        <i>{{ event.timestamp }}</i> {{ event.action }} <b>{{ event.field }}</b> {% if event.value %}{{ event.value }}{% else %}<i>geen waarde</i>{% endif %}
+                    </p>
+                {% endif %}
             {% endfor %}
         </section>
 
