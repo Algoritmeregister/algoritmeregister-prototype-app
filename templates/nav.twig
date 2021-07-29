@@ -1,3 +1,4 @@
-<nav>
-    <a href="/over">over het algoritmeregister</a>&emsp;
+<nav {% if token %}class="warning-background"{% endif %}>
+    {% if token %}<a href="/details/{{ id }}">uitloggen</a>&emsp;{% endif %}
+    {% if not token %}<a href="/over">over het algoritmeregister</a>&emsp;{% endif %}
 </nav>

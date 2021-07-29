@@ -84,7 +84,6 @@ $app->get('/details/{id}', function (Request $request, Response $response, $args
     $id = $args['id'];
     $token = $request->getQueryParams()["token"];
     $toepassing = $algoritmeregister->readToepassing($id);
-    $events = $algoritmeregister->readEvents($id);
     $grouped = [];
     foreach ($toepassing as $field) {
         if ($field["categorie"]) {
@@ -96,7 +95,21 @@ $app->get('/details/{id}', function (Request $request, Response $response, $args
         'token' => $token,
         'title' => $toepassing["naam"]["waarde"],
         'description' => $toepassing["beschrijving"]["waarde"],
-        'grouped' => $grouped,
+        'grouped' => $grouped
+    ]);
+});
+
+$app->get('/details/{id}/log', function (Request $request, Response $response, $args) use ($algoritmeregister) {
+    $view = Twig::fromRequest($request);
+    $id = $args['id'];
+    $token = $request->getQueryParams()["token"];
+    $toepassing = $algoritmeregister->readToepassing($id);
+    $events = $algoritmeregister->readEvents($id);
+    return $view->render($response, 'details-log.twig', [
+        'id' => $id,
+        'token' => $token,
+        'title' => $toepassing["naam"]["waarde"],
+        'description' => $toepassing["beschrijving"]["waarde"],
         'events' => $events
     ]);
 });

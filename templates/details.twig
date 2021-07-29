@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html>
-    {% include "head.html" %}
+    {% include "head.twig" %}
     <body class="default-background">
         {% include 'nav.twig' %}
+
+        {% if not token %}
         <p style="margin: 20px">
             <a href="/" style="float: left">← terug naar het register</a>
-            {% if token %}
-            <a href="/aanpassen/{{ id }}?token={{ token }}" style="float: left; margin-left: 1em">aanpassen</a>
-            {% endif %}
         </p>
-        <header class="default-color" style="padding: 20px">
-            <h1>{{ title }}</h1>
-            <p>{{ description }}</p>
-        </header>
+        {% endif %}
+
+        {% include "details-header.twig" with {'tab': 'informatie'} %}
         
         {% for categorie, group in grouped %}
             <section>
@@ -33,17 +31,6 @@
                 {% endfor %}
             </section>
         {% endfor %}
-
-        <section>
-            <h2>Log</h2>
-            {% for event in events %}
-                <p>
-                {% for i, j in event %}
-                    {{ i }} <b>{{ j }}</b><br>
-                {% endfor %}
-                </p>
-            {% endfor %}
-        </section>
 
     </body>
 </html>

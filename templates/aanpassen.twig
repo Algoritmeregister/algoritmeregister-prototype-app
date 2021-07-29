@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html>
-    {% include "head.html" %}
+    {% include "head.twig" %}
     <body class="default-background">
         {% include 'nav.twig' %}
-        <p style="margin: 20px">
-            <a href="/details/{{ id }}?token={{ token }}" style="float: left">← aanpassen annuleren zonder opslaan</a>
-        </p>
-        <header class="default-color" style="padding: 20px">
-            <h1>{{ title }}</h1>
-        </header>
+
+        {% include "details-header.twig" with {'tab': 'aanpassen'} %}
 
         <form method="POST" target="/aanpassen/{{ id }}?token={{ token }}">
         

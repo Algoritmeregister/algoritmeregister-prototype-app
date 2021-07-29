@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    {% include "head.twig" %}
+    <body class="default-background">
+        {% include 'nav.twig' %}
+
+        {% if not token %}
+        <p style="margin: 20px">
+            <a href="/" style="float: left">← terug naar het register</a>
+        </p>
+        {% endif %}
+
+        {% include "details-header.twig" with {'tab': 'log'} %}
+
+        <section>
+            <h2>Log</h2>
+            {% for event in events %}
+                <p>
+                {% for i, j in event %}
+                    {{ i }} <b>{{ j }}</b><br>
+                {% endfor %}
+                </p>
+            {% endfor %}
+        </section>
+
+    </body>
+</html>
