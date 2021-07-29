@@ -46,4 +46,11 @@ class ApiClient
         ]);
         return json_decode(file_get_contents($this->_apiUrl . "/toepassingen/{$id}?token={$token}", false, $context), true);
     }
+
+    public function readEvents($id)
+    {
+        $rs = json_decode(file_get_contents($this->_apiUrl . "/events/{$id}"), true);
+        $events = $rs["_embedded"]["events"];
+        return $events;
+    }
 }

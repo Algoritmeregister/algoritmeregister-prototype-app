@@ -34,5 +34,16 @@
             </section>
         {% endfor %}
 
+        <section>
+            <h2>Log</h2>
+            {% for event in events %}
+                <p>
+                {% for i, j in event %}
+                    {{ i }} <b>{{ j }}</b><br>
+                {% endfor %}
+                </p>
+            {% endfor %}
+        </section>
+
     </body>
 </html>
