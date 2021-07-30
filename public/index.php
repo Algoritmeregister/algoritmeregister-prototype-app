@@ -49,18 +49,16 @@ $app->post('/aanmelden', function (Request $request, Response $response, $args) 
     $data["status"] = "aangemeld";
     $data["herziening"] = date("d-m-Y");
 
-    $contact = $data["contact"];
-    
-    $maildomain = array_pop(explode('@', $contact));
-    if (!in_array($maildomain, $config['known-maildomains'])) {
-        return $response->withHeader("Location", "/aanmelden")->withStatus(303);
-    }
-
     $toepassing = $algoritmeregister->createToepassing($data);
+
+    if (!$toepassing) {
+        return $response->withHeader("Location", "/aanmelden");
+    }
     
     $naam = $toepassing["naam"]["waarde"];
     $id = $toepassing["id"]["waarde"];
     $token = $toepassing["token"]["waarde"];
+    $contact = $data["contact"];
 
     $baseUrl = $request->getUri()->getScheme() . "://" . $request->getUri()->getHost();
     $port = $request->getUri()->getPort();
