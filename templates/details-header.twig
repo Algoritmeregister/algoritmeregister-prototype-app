@@ -2,8 +2,8 @@
     <h1>{{ title }}</h1>
     <p>{{ description }}</p>
     <p class="tabs">
-        <a {% if tab == "informatie" %}class="active"{% endif %} href="/details/{{ id }}{% if token %}?token={{ token }}{% endif %}">informatie</a>&emsp;
-        <a {% if tab == "log" %}class="active"{% endif %} href="/details/{{ id }}/log{% if token %}?token={{ token }}{% endif %}">log</a>&emsp;
+        <a {% if tab == "details" %}class="active"{% endif %} href="/details/{{ id }}{% if token %}?token={{ token }}{% endif %}">details</a>&emsp;
+        <a {% if tab == "updates" %}class="active"{% endif %} href="/details/{{ id }}/log{% if token %}?token={{ token }}{% endif %}">updates</a>&emsp;
         <a {% if tab == "discussie" %}class="active"{% endif %} href="#">discussie</a>&emsp;
         {% if token %}<a {% if tab == "aanpassen" %}class="active"{% endif %} href="/aanpassen/{{ id }}?token={{ token }}">aanpassen</a>{% endif %}
     </p>
