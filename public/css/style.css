@@ -75,7 +75,7 @@ footer img { height: 60px; vertical-align: middle; margin-left: 10px }
 }
 
 @media only screen and (min-width: 920px) {
-    section, p, h1, h2, h3, label, textarea { margin-left: 40px }
+    section, p, h1, h2, h3, label, textarea, form { margin-left: 40px }
     .bol { float: left; margin: 0 -50px }
     .tabs { margin-left: 80px }
     main { margin: 40px }
