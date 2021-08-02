@@ -1,36 +1,38 @@
 <!DOCTYPE html>
 <html>
     {% include "head.twig" %}
-    <body class="default-background">
-        {% include 'nav.twig' %}
+    <body>
+        <div class="default-background">
+            {% include 'nav.twig' %}
 
-        {% if not token %}
-        <p style="margin: 20px">
-            <a href="/" style="float: left">← terug naar het register</a>
-        </p>
-        {% endif %}
+            {% if not token %}
+            <p style="margin: 20px">
+                <a href="/" style="float: left">← terug naar het register</a>
+            </p>
+            {% endif %}
 
-        {% include "details-header.twig" with {'tab': 'details'} %}
-        
-        {% for categorie, group in grouped %}
-            <section>
-                <div class="bol">Stap {{ loop.index }}</div>
-                <h2>{{ categorie }}</h2>
-                {% for item in group %}
-                    <h3>{{ item.naam }}</h3>
-                    <p class="omschrijving">{{ item.omschrijving }}</p>
-                    {% if item.type == "bool" %}
-                        <p>{{ item.waarde }}</p>
-                    {% elseif item.type == "datum" %}
-                        <p>{{ item.waarde }}</p>
-                    {% elseif item.type == "url" %}
-                        <p><a href="{{ item.waarde }}" target="_blank">{{ item.waarde }}</a></p>
-                    {% else %}
-                        <p>{{ item.waarde }}</p>
-                    {% endif %}
-                {% endfor %}
-            </section>
-        {% endfor %}
-
+            {% include "details-header.twig" with {'tab': 'details'} %}
+            
+            {% for categorie, group in grouped %}
+                <section>
+                    <div class="bol">Stap {{ loop.index }}</div>
+                    <h2>{{ categorie }}</h2>
+                    {% for item in group %}
+                        <h3>{{ item.naam }}</h3>
+                        <p class="omschrijving">{{ item.omschrijving }}</p>
+                        {% if item.type == "bool" %}
+                            <p>{{ item.waarde }}</p>
+                        {% elseif item.type == "datum" %}
+                            <p>{{ item.waarde }}</p>
+                        {% elseif item.type == "url" %}
+                            <p><a href="{{ item.waarde }}" target="_blank">{{ item.waarde }}</a></p>
+                        {% else %}
+                            <p>{{ item.waarde }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </section>
+            {% endfor %}
+        </div>
+        {% include "footer.twig" %}
     </body>
 </html>

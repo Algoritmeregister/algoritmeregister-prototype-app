@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html>
     {% include "head.twig" %}
-    <body class="default-background">
-        {% include 'nav.twig' %}
-        <header class="default-color">
-            <h1>Algoritmeregister</h1>
-            {% include "projectomschrijving.twig" %}
-            <p><a href="/aanmelden"><span class="warning-icon">+</span> Algoritmische toepassing aanmelden</a></p>
-        </header>
-        <main>
-            <table>
-                <tr class="default-color">
-                    <th>Naam</th>
-                    <th>Organisatie</th>
-                    <th>Afdeling</th>
-                    <th>Herziening</th>
-                    <th>Status</th>
-                    <th>Type</th>
-                    <th></th>
-                </tr>
-                {% for item in items %}
-                    <tr>
-                        <td><a href="/details/{{ item.id }}">{{ item.naam }}</a></td>
-                        <td>{{ item.organisatie }}</td>
-                        <td>{{ item.afdeling }}</td>
-                        <td><div class="warning-icon">!</div> {{ item.herziening }}</td>
-                        <td>{{ item.status }}</td>
-                        <td>{{ item.type }}</td>
-                        <td><a href="{{ item.uri }}" target="_blank">.json data</a></td>
+    <body>
+        <div class="default-background">
+            {% include 'nav.twig' %}
+            <header class="default-color">
+                <h1>Algoritmeregister</h1>
+                {% include "projectomschrijving.twig" %}
+                <p><a href="/aanmelden"><span class="warning-icon">+</span> Algoritmische toepassing aanmelden</a></p>
+            </header>
+            <main>
+                <table>
+                    <tr class="default-color">
+                        <th>Naam</th>
+                        <th>Organisatie</th>
+                        <th>Afdeling</th>
+                        <th>Herziening</th>
+                        <th>Status</th>
+                        <th>Type</th>
+                        <th></th>
                     </tr>
-                {% endfor %}
-                
-            </table>
-        </main>
+                    {% for item in items %}
+                        <tr>
+                            <td><a href="/details/{{ item.id }}">{{ item.naam }}</a></td>
+                            <td>{{ item.organisatie }}</td>
+                            <td>{{ item.afdeling }}</td>
+                            <td><div class="warning-icon">!</div> {{ item.herziening }}</td>
+                            <td>{{ item.status }}</td>
+                            <td>{{ item.type }}</td>
+                            <td><a href="{{ item.uri }}" target="_blank">.json data</a></td>
+                        </tr>
+                    {% endfor %}
+                    
+                </table>
+            </main>
+        </div>
+        {% include "footer.twig" %}
     </body>
 </html>

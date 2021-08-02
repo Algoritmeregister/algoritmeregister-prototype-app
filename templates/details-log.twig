@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html>
     {% include "head.twig" %}
-    <body class="default-background">
-        {% include 'nav.twig' %}
+    <body>
+        <div class="default-background">
+            {% include 'nav.twig' %}
 
-        {% if not token %}
-        <p style="margin: 20px">
-            <a href="/" style="float: left">← terug naar het register</a>
-        </p>
-        {% endif %}
+            {% if not token %}
+            <p style="margin: 20px">
+                <a href="/" style="float: left">← terug naar het register</a>
+            </p>
+            {% endif %}
 
-        {% include "details-header.twig" with {'tab': 'updates'} %}
+            {% include "details-header.twig" with {'tab': 'updates'} %}
 
-        <section>
-            <h2>Log</h2>
-            {% for event in events %}
-                {% if event.attribute == "waarde" %}
-                    <p>
-                        <i>{{ event.timestamp }}</i> {{ event.action }} <b>{{ event.field }}</b> {% if event.value %}{{ event.value }}{% else %}<i>geen waarde</i>{% endif %}
-                    </p>
-                {% endif %}
-            {% endfor %}
-        </section>
-
+            <section>
+                <h2>Log</h2>
+                {% for event in events %}
+                    {% if event.attribute == "waarde" %}
+                        <p>
+                            <i>{{ event.timestamp }}</i> {{ event.action }} <b>{{ event.field }}</b> {% if event.value %}{{ event.value }}{% else %}<i>geen waarde</i>{% endif %}
+                        </p>
+                    {% endif %}
+                {% endfor %}
+            </section>
+        </div>
+        {% include "footer.twig" %}
     </body>
 </html>
