@@ -18,6 +18,7 @@
                         <th>Herziening</th>
                         <th>Status</th>
                         <th>Type</th>
+                        <th>Categorie</th>
                         <th></th>
                     </tr>
                     {% for item in items %}
@@ -28,6 +29,7 @@
                             <td><div class="warning-icon">!</div> {{ item.herziening }}</td>
                             <td>{{ item.status }}</td>
                             <td>{{ item.type }}</td>
+                            <td>{{ item.categorie }}</td>
                             <td><a href="{{ item.uri }}" target="_blank">.json data</a></td>
                         </tr>
                     {% endfor %}
