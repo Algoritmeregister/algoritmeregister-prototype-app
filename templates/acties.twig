@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    {% include "head.twig" %}
+    <body>
+        <div class="default-background">
+            {% include 'nav.twig' %}
+
+            {% include "details-header.twig" with {'tab': 'acties'} %}
+
+            <form method="POST" action="/acties/verwijderen/{{ id }}?token={{ token }}">
+
+                <section>
+                    <div class="bol">Let op!</div>
+                    <h2>TOEPASSING VERWIJDEREN</h2>
+                    <p>Deze toepassing verwijderen. Let op: dit kan niet ongedaan worden gemaakt.</p>
+                
+                    <div style="text-align: right">
+                        <button type="submit" value="delete">Toepassing verwijderen</button>
+                    </div>
+                </section>
+
+            </form>
+        </div>
+        {% include "footer.twig" %}
+    </body>
+</html>

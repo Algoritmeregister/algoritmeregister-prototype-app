@@ -5,6 +5,7 @@
         <a {% if tab == "details" %}class="active"{% endif %} href="/details/{{ id }}{% if token %}?token={{ token }}{% endif %}">details</a>&emsp;
         <a {% if tab == "updates" %}class="active"{% endif %} href="/details/{{ id }}/log{% if token %}?token={{ token }}{% endif %}">updates</a>&emsp;
         <a {% if tab == "discussie" %}class="active"{% endif %} href="#">discussie</a>&emsp;
-        {% if token %}<a {% if tab == "aanpassen" %}class="active"{% endif %} href="/aanpassen/{{ id }}?token={{ token }}">aanpassen</a>{% endif %}
+        {% if token %}<a {% if tab == "aanpassen" %}class="active"{% endif %} href="/aanpassen/{{ id }}?token={{ token }}">aanpassen</a>{% endif %}&emsp;
+        {% if token %}<a {% if tab == "acties" %}class="active"{% endif %} href="/acties/{{ id }}?token={{ token }}">acties</a>{% endif %}
     </p>
 </header>

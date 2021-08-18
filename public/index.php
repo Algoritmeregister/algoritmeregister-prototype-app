@@ -134,7 +134,27 @@ $app->post('/aanpassen/{id}', function (Request $request, Response $response, $a
     $id = $args['id'];
     $token = $request->getQueryParams()["token"];
     $algoritmeregister->updateToepassing($id, $request->getParsedBody(), $token);
-    return $response->withHeader("Location", "/details/{$id}")->withStatus(303);
+    return $response->withHeader("Location", "/details/{$id}?token={$token}")->withStatus(303);
+});
+
+$app->get('/acties/{id}', function (Request $request, Response $response, $args) use ($algoritmeregister) {
+    $view = Twig::fromRequest($request);
+    $id = $args['id'];
+    $token = $request->getQueryParams()["token"];
+    $toepassing = $algoritmeregister->readToepassing($id);
+    return $view->render($response, 'acties.twig', [
+        'id' => $id,
+        'token' => $token,
+        'title' => $toepassing["naam"]["waarde"],
+        'description' => $toepassing["beschrijving"]["waarde"]
+    ]);
+});
+
+$app->post('/acties/verwijderen/{id}', function (Request $request, Response $response, $args) use ($algoritmeregister) {
+    $id = $args['id'];
+    $token = $request->getQueryParams()["token"];
+    $algoritmeregister->deleteToepassing($id, $token);
+    return $response->withHeader("Location", "/")->withStatus(204);
 });
 
 $app->run();

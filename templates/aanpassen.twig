@@ -7,7 +7,7 @@
 
             {% include "details-header.twig" with {'tab': 'aanpassen'} %}
 
-            <form method="POST" target="/aanpassen/{{ id }}?token={{ token }}">
+            <form method="POST" action="/aanpassen/{{ id }}?token={{ token }}">
             
                 {% for categorie, group in grouped %}
                     <section>
@@ -39,8 +39,7 @@
 
                 <section style="text-align: right">
                     <button type="submit">Aanpassingen opslaan</button>
-                    <!--<button>Annuleren</button>-->
-                </seciton>
+                </section>
 
             </form>
         </div>
