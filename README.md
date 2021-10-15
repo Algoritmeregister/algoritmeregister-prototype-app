@@ -1,6 +1,8 @@
-# Algoritmeregister Prototype App
+# Algoritmeregister Beheer Tool
 
-https://github.com/Algoritmeregister/algoritmeregister-prototype
+(voorheen "algoritmeregister prototype app")
+
+https://github.com/Algoritmeregister/beheer-tool
 
 ## Installatie
 
