@@ -1,14 +1,15 @@
-# Algoritmeregister Beheer Tool
+# Algoritmeregister Manager
 
-(voorheen "algoritmeregister prototype app")
+(formerly known as "algoritmeregister prototype app")
 
-https://github.com/Algoritmeregister/beheer-tool
+https://github.com/Algoritmeregister/manager
 
 ## Installatie
 
-1. git clone XXX
+1. git clone
 2. composer install
-5. cp private/config.php.dist private/config.php
+3. cp private/config.php.dist private/config.php
+4. cp private/organizations/example.json.dist private/organizations/organization.json
 
 ## Lokaal draaien
 

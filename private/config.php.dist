@@ -1,7 +1,7 @@
 <?php
 
 $config = [
-    'api-url' => 'https://',
+    'api-url' => 'http://172.24.0.1:8081',
     'mailgun-url' => 'https://api.eu.mailgun.net/',
     'mailgun-key' => 'key-'
 ];

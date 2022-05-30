@@ -20,34 +20,32 @@ $app->add(TwigMiddleware::create($app, $twig));
 $algoritmeregister = new \Tiltshift\Algoritmeregister\ApiClient($config["api-url"]);
 
 $app->get('/', function (Request $request, Response $response, $args) use ($algoritmeregister) {
+    $token = $request->getQueryParams()["token"];
     $view = Twig::fromRequest($request);
     $toepassingen = $algoritmeregister->readToepassingen();
     return $view->render($response, 'overzicht.twig', [
-        'items' => $toepassingen
-    ]);
-});
-
-$app->get('/over', function (Request $request, Response $response, $args) {
-    $view = Twig::fromRequest($request);
-    return $view->render($response, 'over.twig', [
-        'title' => 'Over het Algoritmeregister'
+        'items' => $toepassingen,
+        'token' => $token
     ]);
 });
 
 $app->get('/aanmelden', function (Request $request, Response $response, $args) {
+    $token = $request->getQueryParams()["token"];
+    if (!$token) die;
+
     $view = Twig::fromRequest($request);
     return $view->render($response, 'aanmelden.twig', [
-        'title' => 'Algoritmische Toepassing Aanmelden',
-        'description' => 'Meld je Algoritmische Toepassing aan.'
+        'token' => $token
     ]);
 });
 
 $app->post('/aanmelden', function (Request $request, Response $response, $args) use ($config, $algoritmeregister) {
     $data = $request->getParsedBody();
+    $token = $request->getQueryParams()["token"];
 
     $data["type"] = "onbekend";
     $data["status"] = "aangemeld";
-    $data["herziening"] = date("d-m-Y");
+    $data["revision_date"] = date("d-m-Y");
 
     $toepassing = $algoritmeregister->createToepassing($data);
 
@@ -55,10 +53,10 @@ $app->post('/aanmelden', function (Request $request, Response $response, $args) 
         return $response->withHeader("Location", "/aanmelden");
     }
     
-    $naam = $toepassing["naam"]["waarde"];
-    $id = $toepassing["id"]["waarde"];
-    $token = $toepassing["token"]["waarde"];
-    $contact = $data["contact"];
+    $naam = $toepassing["name"];
+    $id = $toepassing["id"];
+    $token = $toepassing["token"];
+    $contact = $data["contact_email"];
 
     $baseUrl = $request->getUri()->getScheme() . "://" . $request->getUri()->getHost();
     $port = $request->getUri()->getPort();
@@ -82,17 +80,17 @@ $app->get('/details/{id}', function (Request $request, Response $response, $args
     $id = $args['id'];
     $token = $request->getQueryParams()["token"];
     $toepassing = $algoritmeregister->readToepassing($id);
+    $schema = json_decode(file_get_contents($toepassing["schema"]), true);
     $grouped = [];
-    foreach ($toepassing as $field) {
-        if ($field["categorie"]) {
-            $grouped[$field["categorie"]][] = $field;
-        }
+    foreach ($schema["properties"] as $property => $details) {
+        if ($toepassing[$property]) $details["value"] = $toepassing[$property];
+        $grouped[$details["category"]][] = $details;
     }
     return $view->render($response, 'details.twig', [
         'id' => $id,
         'token' => $token,
-        'title' => $toepassing["naam"]["waarde"],
-        'description' => $toepassing["beschrijving"]["waarde"],
+        'title' => $toepassing["name"],
+        'description' => $toepassing["description_short"],
         'grouped' => $grouped
     ]);
 });
@@ -106,8 +104,8 @@ $app->get('/details/{id}/log', function (Request $request, Response $response, $
     return $view->render($response, 'details-log.twig', [
         'id' => $id,
         'token' => $token,
-        'title' => $toepassing["naam"]["waarde"],
-        'description' => $toepassing["beschrijving"]["waarde"],
+        'title' => $toepassing["name"],
+        'description' => $toepassing["description_short"],
         'events' => $events
     ]);
 });
@@ -117,15 +115,18 @@ $app->get('/aanpassen/{id}', function (Request $request, Response $response, $ar
     $id = $args['id'];
     $token = $request->getQueryParams()["token"];
     $toepassing = $algoritmeregister->readToepassing($id);
+    $schema = json_decode(file_get_contents($toepassing["schema"]), true);
     $grouped = [];
-    foreach ($toepassing as $field) {
-        $grouped[$field["categorie"]][] = $field;
+    foreach ($schema["properties"] as $property => $details) {
+        $details["property"] = $property;
+        if ($toepassing[$property]) $details["value"] = $toepassing[$property];
+        $grouped[$details["category"]][] = $details;
     }
     return $view->render($response, 'aanpassen.twig', [
         'id' => $id,
         'token' => $token,
-        'title' => $toepassing["naam"]["waarde"],
-        'description' => $toepassing["beschrijving"]["waarde"],
+        'title' => $toepassing["name"],
+        'description' => $toepassing["description_short"],
         'grouped' => $grouped
     ]);
 });
@@ -145,8 +146,8 @@ $app->get('/acties/{id}', function (Request $request, Response $response, $args)
     return $view->render($response, 'acties.twig', [
         'id' => $id,
         'token' => $token,
-        'title' => $toepassing["naam"]["waarde"],
-        'description' => $toepassing["beschrijving"]["waarde"]
+        'title' => $toepassing["name"],
+        'description' => $toepassing["description_short"]
     ]);
 });
 

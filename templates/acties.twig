@@ -5,6 +5,10 @@
         <div class="default-background">
             {% include 'nav.twig' %}
 
+            <p style="margin: 20px">
+                <a href="/{% if token %}?token={{ token }}{% endif %}" style="float: left">← terug naar het register</a>
+            </p>
+
             {% include "details-header.twig" with {'tab': 'acties'} %}
 
             <form method="POST" action="/acties/verwijderen/{{ id }}?token={{ token }}">

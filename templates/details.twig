@@ -5,29 +5,27 @@
         <div class="default-background">
             {% include 'nav.twig' %}
 
-            {% if not token %}
             <p style="margin: 20px">
-                <a href="/" style="float: left">← terug naar het register</a>
+                <a href="/{% if token %}?token={{ token }}{% endif %}" style="float: left">← terug naar het register</a>
             </p>
-            {% endif %}
 
             {% include "details-header.twig" with {'tab': 'details'} %}
             
-            {% for categorie, group in grouped %}
+            {% for category, group in grouped %}
                 <section>
                     <div class="bol">Stap {{ loop.index }}</div>
-                    <h2>{{ categorie }}</h2>
+                    <h2>{{ category }}</h2>
                     {% for item in group %}
-                        <h3>{{ item.naam }}</h3>
-                        <p class="omschrijving">{{ item.omschrijving }}</p>
+                        <h3>{{ item.name }}</h3>
+                        <p class="omschrijving">{{ item.description }}</p>
                         {% if item.type == "bool" %}
-                            <p>{{ item.waarde }}</p>
+                            <p>{{ item.value }}</p>
                         {% elseif item.type == "datum" %}
-                            <p>{{ item.waarde }}</p>
+                            <p>{{ item.value }}</p>
                         {% elseif item.type == "url" %}
-                            <p><a href="{{ item.waarde }}" target="_blank">{{ item.waarde }}</a></p>
+                            <p><a href="{{ item.value }}" target="_blank">{{ item.value }}</a></p>
                         {% else %}
-                            <p>{{ item.waarde }}</p>
+                            <p>{{ item.value }}</p>
                         {% endif %}
                     {% endfor %}
                 </section>

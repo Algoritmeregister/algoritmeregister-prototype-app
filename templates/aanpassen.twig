@@ -5,33 +5,37 @@
         <div class="default-background">
             {% include 'nav.twig' %}
 
+            <p style="margin: 20px">
+                <a href="/{% if token %}?token={{ token }}{% endif %}" style="float: left">← terug naar het register</a>
+            </p>
+
             {% include "details-header.twig" with {'tab': 'aanpassen'} %}
 
             <form method="POST" action="/aanpassen/{{ id }}?token={{ token }}">
             
-                {% for categorie, group in grouped %}
+                {% for category, group in grouped %}
                     <section>
                         <div class="bol">Stap {{ loop.index }}</div>
-                        <h2>{{ categorie }}</h2>
+                        <h2>{{ category }}</h2>
                         {% for item in group %}
-                            <h3>{{ item.naam }}</h3>
+                            <h3>{{ item.name }}</h3>
                             {% if item.type == "bool" %}
                                 <p>
-                                    <select name="{{ item.eigenschap }}">
+                                    <select name="{{ item.property }}">
                                         <option></option>
-                                        <option {% if item.waarde == "ja" %}selected{% endif %}>ja</option>
-                                        <option {% if item.waarde == "nee" %}selected{% endif %}>nee</option>
+                                        <option {% if item.value == "ja" %}selected{% endif %}>ja</option>
+                                        <option {% if item.value == "nee" %}selected{% endif %}>nee</option>
                                     </select>
                                 </p>
                             {% elseif item.type == "datum" %}
-                                <p class="omschrijving">{{ item.omschrijving }}</p>
-                                <p><input type="date" name="{{ item.eigenschap }}" value="{{ item.waarde }}"></p>
+                                <p class="omschrijving">{{ item.description }}</p>
+                                <p><input type="date" name="{{ item.property }}" value="{{ item.value }}"></p>
                             {% elseif item.type == "url" %}
-                                <p class="omschrijving">{{ item.omschrijving }}</p>
-                                <p><input type="text" name="{{ item.eigenschap }}" value="{{ item.waarde }}"></p>
+                                <p class="omschrijving">{{ item.description }}</p>
+                                <p><input type="text" name="{{ item.property }}" value="{{ item.value }}"></p>
                             {% else %}
-                                <p class="omschrijving">{{ item.omschrijving }}</p>
-                                <textarea name="{{ item.eigenschap }}">{{ item.waarde }}</textarea>
+                                <p class="omschrijving">{{ item.description }}</p>
+                                <textarea name="{{ item.property }}">{{ item.value }}</textarea>
                             {% endif %}
                         {% endfor %}
                     </section>
