@@ -6,16 +6,16 @@
             {% include 'nav.twig' %}
 
             <p style="margin: 20px">
-                <a href="/{% if token %}?token={{ token }}{% endif %}" style="float: left">← terug naar het register</a>
+                <a href="/{% if token %}?token={{ token }}{% endif %}">← terug naar het register</a>
             </p>
 
             {% include "details-header.twig" with {'tab': 'aanpassen'} %}
 
-            <form method="POST" action="/aanpassen/{{ id }}?token={{ token }}">
+            <form class="sheet" method="POST" action="/aanpassen/{{ id }}?token={{ token }}">
             
                 {% for category, group in grouped %}
                     <section>
-                        <div class="bol">Stap {{ loop.index }}</div>
+                        {# <div class="bol">Stap {{ loop.index }}</div> #}
                         <h2>{{ category }}</h2>
                         {% for item in group %}
                             <h3>{{ item.name }}</h3>

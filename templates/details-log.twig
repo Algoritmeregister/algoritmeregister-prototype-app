@@ -6,12 +6,12 @@
             {% include 'nav.twig' %}
 
             <p style="margin: 20px">
-                <a href="/{% if token %}?token={{ token }}{% endif %}" style="float: left">← terug naar het register</a>
+                <a href="/{% if token %}?token={{ token }}{% endif %}">← terug naar het register</a>
             </p>
 
             {% include "details-header.twig" with {'tab': 'updates'} %}
 
-            <section>
+            <section class="sheet">
                 <h2>Log</h2>
                 {% for event in events | reverse %}
                     <p>

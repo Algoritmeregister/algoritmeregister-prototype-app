@@ -11,10 +11,9 @@
 
             {% include "details-header.twig" with {'tab': 'acties'} %}
 
-            <form method="POST" action="/acties/verwijderen/{{ id }}?token={{ token }}">
+            <form class="sheet" method="POST" action="/acties/verwijderen/{{ id }}?token={{ token }}">
 
                 <section>
-                    <div class="bol">Let op!</div>
                     <h2>TOEPASSING VERWIJDEREN</h2>
                     <p>Deze toepassing verwijderen. Let op: dit kan niet ongedaan worden gemaakt.</p>
                 

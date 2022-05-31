@@ -4,14 +4,13 @@
     <body>
         <div class="default-background">
             {% include 'nav.twig' %}
-            <p style="margin: 20px"><a href="/" style="float: left">← terug naar overzicht</a></p>
-            <header class="default-color">
+            <p style="margin: 20px"><a href="/">← terug naar overzicht</a></p>
+            <header class="default-color content-header">
                 <h1>Algoritmische Toepassing Aanmelden</h1>
                 <p>Meld je algoritmische toepassing aan.</p>
             </header>
 
-            <section>
-                <div class="bol">Stap 1</div>
+            <section class="sheet">
                 <h2>Bepaal de noodzaak voor het aanmelden van deze toepassing</h2>
                 <p>1. Wordt de toepassing ingezet in een maatschappelijk domein?</p>
                 <p>2. Wordt gebruik gemaakt van een vorm van AI-technologie?</p>
@@ -23,10 +22,9 @@
                 <p>Voor meer informatie leest u de publicatie <a href="https://ecp.nl/wp-content/uploads/2018/11/Artificial-Intelligence-Impact-Assesment.pdf">Artificial Intelligence Impact Assessment</a> van ECP.</p>
             </section>
 
-            <section>
-                <div class="bol">Stap 2</div>
+            <section class="sheet">
                 <h2>Is het antwoord op één van bovenstaande vragen "ja"?</h2>
-                <form method="POST" action="/aanmelden">
+                <form method="POST" action="/aanmelden" style="margin: 1em">
                     <label><span>Naam van de toepassing</span> <input type="text" name="name"></input></label><br>
                     <label><span>Organisatie</span> <input type="text" name="organization"></input></label><br>
                     <label><span>Afdeling</span> <input type="text" name="department"></input></label><br>

@@ -4,7 +4,7 @@
     <body>
         <div class="default-background">
             {% include 'nav.twig' %}
-            <header class="default-color">
+            <header class="default-color content-header">
                 <h1>Algoritmeregister</h1>
                 {% include "projectomschrijving.twig" %}
                 {% if token %}
@@ -15,7 +15,6 @@
                 <table>
                     <tr class="default-color">
                         <th>Naam</th>
-                        <th>Organisatie</th>
                         <th>Afdeling</th>
                         <th>Herziening</th>
                         <th>Status</th>
@@ -26,7 +25,6 @@
                     {% for item in items %}
                         <tr>
                             <td><a href="/details/{{ item.id }}{% if token %}?token={{ token }}{% endif %}">{{ item.name }}</a></td>
-                            <td>{{ item.organization }}</td>
                             <td>{{ item.department }}</td>
                             <td><div class="warning-icon">!</div> {{ item.revision_date }}</td>
                             <td>{{ item.status }}</td>
