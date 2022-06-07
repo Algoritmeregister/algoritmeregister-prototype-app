@@ -9,6 +9,13 @@ class ApiClient
     public function __construct($apiUrl)
     {
         $this->_apiUrl = $apiUrl;
+        $rs = json_decode(file_get_contents($this->_apiUrl), true);
+        $this->_csvExportUrl = $rs["_links"]["ar:exporteren"]["href"];
+    }
+
+    public function getCsvExportUrl()
+    {
+        return $this->_csvExportUrl;
     }
 
     public function readToepassingen()

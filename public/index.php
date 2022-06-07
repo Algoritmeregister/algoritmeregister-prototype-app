@@ -23,9 +23,11 @@ $app->get('/', function (Request $request, Response $response, $args) use ($algo
     $token = $request->getQueryParams()["token"];
     $view = Twig::fromRequest($request);
     $toepassingen = $algoritmeregister->readToepassingen();
+    $csvExportUrl = $algoritmeregister->getCsvExportUrl();
     return $view->render($response, 'overzicht.twig', [
         'items' => $toepassingen,
-        'token' => $token
+        'token' => $token,
+        'csvExportUrl' => $csvExportUrl,
     ]);
 });
 
