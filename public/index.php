@@ -23,6 +23,9 @@ $app->get('/', function (Request $request, Response $response, $args) use ($algo
     $token = $request->getQueryParams()["token"];
     $view = Twig::fromRequest($request);
     $toepassingen = $algoritmeregister->readToepassingen();
+    foreach ($toepassingen as &$toepassing) {
+        $toepassing["schema"] = end(explode("/", $toepassing["schema"]));
+    }
     $csvExportUrl = $algoritmeregister->getCsvExportUrl();
     return $view->render($response, 'overzicht.twig', [
         'items' => $toepassingen,
