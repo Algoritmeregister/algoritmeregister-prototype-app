@@ -8,7 +8,7 @@
 body { font-family: "Noto Sans", sans-serif; font-weight: 100 }
 .sheet { padding: 20px; border-radius: 2px; background: #F4FAFF; margin: 0 40px 40px }
 table { width: 100%; border-collapse: collapse; min-width: 800px }
-tr { line-height: 4em }
+tr { line-height: 1.4em; height: 4em }
 tr:nth-child(odd) { background: #F4FAFF }
 th { text-align: left }
 th, td { padding: 0 1em }
