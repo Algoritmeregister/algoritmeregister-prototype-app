@@ -39,17 +39,17 @@ $app->get('/', function (Request $request, Response $response, $args) use ($algo
     ]);
 });
 
-$app->get('/aanmelden', function (Request $request, Response $response, $args) {
+$app->get('/toevoegen', function (Request $request, Response $response, $args) {
     $token = $request->getQueryParams()["token"];
     if (!$token) die;
 
     $view = Twig::fromRequest($request);
-    return $view->render($response, 'aanmelden.twig', [
+    return $view->render($response, 'toevoegen.twig', [
         'token' => $token
     ]);
 });
 
-$app->post('/aanmelden', function (Request $request, Response $response, $args) use ($config, $algoritmeregister) {
+$app->post('/toevoegen', function (Request $request, Response $response, $args) use ($config, $algoritmeregister) {
     $data = $request->getParsedBody();
     $token = $request->getQueryParams()["token"];
 
@@ -60,7 +60,7 @@ $app->post('/aanmelden', function (Request $request, Response $response, $args) 
     $toepassing = $algoritmeregister->createToepassing($data);
 
     if (!$toepassing) {
-        return $response->withHeader("Location", "/aanmelden");
+        return $response->withHeader("Location", "/toevoegen");
     }
     
     $naam = $toepassing["name"];

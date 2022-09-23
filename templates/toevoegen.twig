@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    {% include "head.twig" %}
+    <body>
+        <div class="default-background">
+            {% include 'nav.twig' %}
+            <p style="margin: 20px"><a href="/">← terug naar overzicht</a></p>
+            <header class="default-color content-header">
+                <h1>Project toevoegen</h1>
+                <p></p>
+            </header>
+
+            <section class="sheet">
+                <form method="POST" action="/toevoegen" style="margin: 1em">
+                    <label><span>Naam van het project</span> <input type="text" name="name"></input></label><br>
+                    <!--<label><span>Organisatie</span> <input type="text" name="organization"></input></label><br>-->
+                    <input type="hidden" name="organization" value="Provincie Noord-Brabant"><!-- FIXME config -->
+                    <label><span>Programma</span> <input type="text" name="department"></input></label><br><!-- FIXME drop down -->
+                    <label><span>Gebied</span> <input type="text" name="area"></input></label><br>
+                    <label><span>Domein</span> <input type="text" name="domain"></input></label><br><!-- FIXME drop down -->
+                    <label><span>Omschrijving</span> <textarea name="description_short"></textarea></label><br>
+                    <label><span>Risico classificatie</span> <input type="text" name="category"></input></label><br><!-- FIXME drop down -->
+                    <label><span>Status</span> <input type="text" name="status"></input></label><br><!-- FIXME drop down -->
+                    <label><span>Website</span> <input type="text" name="website"></input></label><br>
+                    <label><span>Opmerking</span> <input type="text" name="remark"></input></label><br>
+                    <input type="hidden" name="language" value="nl"><!-- FIXME config -->
+                    <label><span>E-mailadres contactpersoon</span> <input type="email" name="contact_email"></input></label><br>
+                    <button class="button" type="submit">Toevoegen</button>
+                </form>
+            </section>
+        </div>
+        {% include "footer.twig" %}
+    </body>
+</html>
