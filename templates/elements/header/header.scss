@@ -1,0 +1,6 @@
+.header-logo {
+	width: 220px;
+	@include md {
+		width: 280px;
+	}
+}

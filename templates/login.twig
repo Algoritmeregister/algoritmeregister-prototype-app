@@ -2,15 +2,23 @@
 
 {% block main %}
     <div class="color-bg-3">
-        {% include 'nav.twig' with {'disablelinks': true} %}
-        <form method="GET" action="/">
-            <input type="hidden" name="token" value="12345">
-            <label class="text-h3">Gebruikersnaam<br>
-            <input></label><br>
-            <label>Wachtwoord<br>
-            <input></label><br>
-            <button>Inloggen</button>
-        </form>
-        <a href="">wachtwoord vergeten?</a>
+        <div class="layout u-justify-center u-align-center u-min-height-80">
+            <div class="layout-1 layout-md-1-3">
+                <h2 class="text-h2 m-b4">Aanmelden</h1>
+                <form method="GET" action="/" class="m-b2">
+                    <input type="hidden" name="token" value="12345">
+                    <label class="u-display-block m-b3">
+                        <span class="text-label u-display-block m-b2 color-2">Gebruikersnaam</span>
+                        <input type="text" class="w-100 text-body u-display-block u-border-1 u-border-color-2 p-y1 p-x2">
+                    </label>
+                    <label class="u-display-block m-b4">
+                        <span class="text-label u-display-block m-b2 color-2">Wachtwoord</span>
+                        <input type="password" class="w-100 text-body u-display-block u-border-1 u-border-color-2 p-y1 p-x2">
+                    </label>
+                    <button class="btn">Login</button>
+                </form>
+                <a href="" class="text-body">wachtwoord vergeten?</a>
+            </div>
+        </div>
     </div>
 {% endblock %}

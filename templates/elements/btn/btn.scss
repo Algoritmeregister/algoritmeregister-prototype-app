@@ -1,0 +1,11 @@
+@import "token/token";
+
+.btn {
+	background-color: $color-2;
+	padding: $spacing-1 $spacing-4;
+	@include text-h4;
+	color: $color-1;
+	border-radius: $border-radius;
+	border: 0;
+	cursor: pointer;
+}
