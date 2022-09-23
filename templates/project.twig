@@ -13,22 +13,38 @@
                 <h1>Projectinformatie</h1>
             </header>
 
-            <div style="background: #F4FAFF">
-                <a class="button" style="background: #4D80E2; float: right; margin: 1em" href="">bewerken</a>
+            <div class="sheet">
+                <a class="button" style="background: #4D80E2; float: right; margin: 1em" href="/aanpassen/{{ id }}{% if token %}?token={{ token }}{% endif %}">bewerken</a><!-- FIXME independent information -->
                 <b>Naam</b>: {{ title }}<br>
                 <b>Afdeling</b>: {{ department }}<br>
                 <b>Contact</b>: {{ contact_name }} (<a href="mailto:{{ contact_email }}">{{ contact_email }}</a>)<br>
                 <b>Openbaar</b>: ja<br>
+                <b>Status</b>: {{ status }}<br>
                 <b>json</b>: <a href="{{ uri }}" target="_blank">.json data</a>
             </div>
 
-            <div>
-                <p>
-                    <input type="checkbox" checked> <b>In dit project worden algoritmes ingezet</b>
-                </p>
-                <p>Bij inzet van algoritmes is <a href="/details/{{ id }}{% if token %}?token={{ token }}{% endif %}">Algoritmeregistratie</a> verplicht</p>
-                <p>Bij inzet van algoritmes wordt de <a href="">Impact Assessment Mensenrechten en Algoritmes</a> aanbevolen</p>
+            <div class="sheet" style="display: flex">
+                <div style="width: 2em">
+                    <input type="checkbox">
+                </div>
+                <div>
+                    <b>In dit project worden bijzondere persoonsgegevens ingezet</b>
+                    <p>Bij inzet van bijzondere persoonsgegevens is <a href="#">DPIA</a> verplicht.</p>
+                </div>
             </div>
+
+            <div class="sheet" style="display: flex">
+                <div style="width: 2em">
+                    <input type="checkbox" checked>
+                </div>
+                <div>
+                    <b>In dit project worden algoritmes ingezet</b>
+                    <p>Bij inzet van algoritmes is <a href="#">algoritmeregistratie</a> verplicht.</p>
+                    <p>Bij inzet van algoritmes wordt de <a href="">Impact Assessment Mensenrechten en Algoritmes</a> aanbevolen.</p>
+                    <p style="text-align: center"><a class="button" style="background: #4D80E2" href="/details/{{ id }}{% if token %}?token={{ token }}{% endif %}">Algoritmeregistratie invullen</a>
+                </div>
+            </div>
+
         </div>
         {% include "footer.twig" %}
     </body>
