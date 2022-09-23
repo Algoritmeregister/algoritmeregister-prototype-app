@@ -101,7 +101,9 @@ $app->get('/project/{id}', function (Request $request, Response $response, $args
         'token' => $token,
         'title' => $toepassing["name"],
         'department' => $toepassing["department"],
+        'contact_name' => $toepassing["contact_name"],
         'contact_email' => $toepassing["contact_email"],
+        'uri' => $toepassing["uri"],
         'description' => $toepassing["description_short"],
         'grouped' => $grouped
     ]);
