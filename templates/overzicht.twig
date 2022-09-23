@@ -16,7 +16,7 @@
                         var trs = document.getElementsByTagName('tr');
                         for (var i = 0; i < trs.length; ++i) {
                             if (trs[i].dataset.filterkeywords) {
-                                trs[i].style.display = trs[i].dataset.filterkeywords.indexOf(str) === -1 ? 'none': 'table-row';
+                                trs[i].style.display = trs[i].dataset.filterkeywords.toLowerCase().indexOf(str.toLowerCase()) === -1 ? 'none': 'table-row';
                             }
                         }
                     }
