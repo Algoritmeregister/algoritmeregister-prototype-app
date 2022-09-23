@@ -68,6 +68,18 @@ $font-weight-bold: 700;
   }
 }
 
+@mixin text-label {
+  font-family: $stack-1;
+  font-weight: $font-weight-normal;
+  font-size: 15px;
+  line-height: 20px;
+  text-transform: uppercase;
+  @include md {
+    font-size: 15px;
+    line-height: 20px;
+  }
+}
+
 @mixin text-menu {
   font-family: $stack-1;
   font-weight: $font-weight-bold;
