@@ -1,0 +1,18 @@
+.layout-overlay {
+	z-index: 9999;
+	position: fixed;
+	pointer-events: none;
+	height: 100vh;
+	width: 100%;
+	display: none;
+}
+
+.layout-overlay.layout-overlay-active {
+	display: block;
+}
+
+.layout-overlay-bar {
+	height: 100vh;
+	width: 100%;
+	background-color: rgba(255,0,120,0.1);
+}

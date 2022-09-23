@@ -6,7 +6,8 @@
         "slim/twig-view": "^3.2",
         "mailgun/mailgun-php": "^3.5",
         "kriswallsmith/buzz": "^1.2",
-        "nyholm/psr7": "^1.4"
+        "nyholm/psr7": "^1.4",
+        "scssphp/scssphp": "^1.11"
     },
     "autoload": {
         "psr-4": {

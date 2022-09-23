@@ -1,10 +1,12 @@
 <?php
+
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
 use Mailgun\Mailgun;
+use ScssPhp\ScssPhp\Compiler;
 
 require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/../private/config.php';
@@ -189,5 +191,28 @@ $app->post('/acties/verwijderen/{id}', function (Request $request, Response $res
     $algoritmeregister->deleteToepassing($id, $token);
     return $response->withHeader("Location", "/")->withStatus(204);
 });
+
+$app->get('/css/compile', function (Request $request, Response $response, $args) use ($algoritmeregister) {
+
+    $compiler = new Compiler();
+    $compiler->setImportPaths(__DIR__ . '/../templates/elements');
+
+    $importString = '';
+    $directory = scandir(__DIR__ . '/../templates/elements');
+    $scssImports = [];
+    foreach ($directory as $item) {
+        if (file_exists(__DIR__ . '/../templates/elements/' . $item . '/' . $item . '.scss')) {
+            $scssImports[] = $item;
+            $importString .= '@import "' . $item . '/' . $item . '";';
+        }
+    }
+
+    $str = $compiler->compileString($importString)->getCss();
+
+    $response->getBody()->write($str);
+    return $response->withHeader('Content-type', 'text/css');
+
+});
+
 
 $app->run();

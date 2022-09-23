@@ -1,0 +1,27 @@
+@import "token/token";
+
+.markup-zone {
+	h2 {
+		@include text-h2;
+		margin-bottom: $spacing-2;
+	}
+	h3 {
+		@include text-h3;
+		margin-bottom: $spacing-2;
+	}
+
+	p { 
+		@include text-body;
+	}
+	p a {
+		text-decoration: underline;
+	}
+	li {
+		@include text-body;
+		margin-bottom: $spacing;
+	}
+    ul li { display: list-item; background-image: url(); background-repeat: no-repeat; background-position: 0px 4px; padding-left: 32px;}
+    ol li { display: list-item; position: relative; padding-left: $spacing-4;}
+    ol, ul { padding-left: 0px; margin-bottom: $spacing-4; margin-top: $spacing-3;}
+    figure { margin-top: $spacing-2; margin-bottom: $spacing-2;}
+}

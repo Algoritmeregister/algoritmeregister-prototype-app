@@ -1,0 +1,121 @@
+// Colors
+$color-0: rgb(20,20,20); // black
+$color-1: rgb(255,255,255); // white
+$color-2: #4D80E2; // blue
+$color-3: #e0e6f2; // light blue
+$color-4: #e0e6f2; // light blue
+$color-5: #e0e6f2; // light blue
+$color-6: #e0e6f2; // light blue
+$color-7: #e0e6f2; // light blue
+
+// Typography
+$stack-1: 'Noto Sans', 'sans-serif';
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+
+@mixin text-body {
+  font-family: $stack-1;
+  font-weight: $font-weight-normal;
+  font-size: 14px;
+  line-height: 24px;
+  @include md {
+    font-size: 15px;
+    line-height: 24px;
+  }
+}
+
+@mixin text-h1 {
+  font-family: $stack-1;
+  font-weight: $font-weight-bold;
+  font-size: 24px;
+  line-height: 32px;
+  @include md {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+@mixin text-h2 {
+  font-family: $stack-1;
+  font-weight: $font-weight-bold;
+  font-size: 24px;
+  line-height: 32px;
+  @include md {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+@mixin text-h3 {
+  font-family: $stack-1;
+  font-weight: $font-weight-bold;
+  font-size: 18px;
+  line-height: 26px;
+  @include md {
+    font-size: 19px;
+    line-height: 24px;
+  }
+}
+
+@mixin text-h4 {
+  font-family: $stack-1;
+  font-weight: $font-weight-bold;
+  font-size: 16px;
+  line-height: 24px;
+  @include md {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@mixin text-menu {
+  font-family: $stack-1;
+  font-weight: $font-weight-bold;
+  font-size: 14px;
+  line-height: 1.5;
+  text-transform: uppercase;
+  @include md {
+    font-size: 16px;
+  }
+}
+
+// Misc
+$border-radius: 4px;
+
+// Spacing
+$spacing: 8px;
+$spacing-1: 8px;
+$spacing-2: 12px;
+$spacing-3: 16px;
+$spacing-4: 24px;
+$spacing-5: 40px;
+$spacing-6: 64px;
+
+$wrapper-sm: 100%;
+$wrapper-md: 100%;
+$wrapper-lg: 1368px;
+$wrapper-lg: 1280px;
+
+// Viewport
+$size-sm: 600px;
+$size-md: 992px;
+$size-lg: 1200px;
+
+// Media queries
+@mixin sm {
+  @media screen and (min-width: #{$size-sm}) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media screen and (min-width: #{$size-md}) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media screen and (min-width: #{$size-lg}) {
+    @content;
+  }
+}

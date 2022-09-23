@@ -1,0 +1,58 @@
+@import "token/token";
+
+.p-1 { padding: $spacing-1 }
+.p-2 { padding: $spacing-2 }
+.p-3 { padding: $spacing-3 }
+.p-4 { padding: $spacing-4 }
+.p-5 { padding: $spacing-5 }
+.p-6 { padding: $spacing-6 }
+
+.p-t1 { padding-top: $spacing-1 }
+.p-t2 { padding-top: $spacing-2 }
+.p-t3 { padding-top: $spacing-3 }
+.p-t4 { padding-top: $spacing-4 }
+.p-t5 { padding-top: $spacing-5 }
+.p-t6 { padding-top: $spacing-6 }
+
+.p-b1 { padding-bottom: $spacing-1 }
+.p-b2 { padding-bottom: $spacing-2 }
+.p-b3 { padding-bottom: $spacing-3 }
+.p-b4 { padding-bottom: $spacing-4 }
+.p-b5 { padding-bottom: $spacing-5 }
+.p-b6 { padding-bottom: $spacing-6 }
+
+.p-l1 { padding-left: $spacing-1 }
+.p-l2 { padding-left: $spacing-2 }
+.p-l3 { padding-left: $spacing-3 }
+.p-l4 { padding-left: $spacing-4 }
+.p-l5 { padding-left: $spacing-5 }
+.p-l6 { padding-left: $spacing-6 }
+
+.p-r1 { padding-right: $spacing-1 }
+.p-r2 { padding-right: $spacing-2 }
+.p-r3 { padding-right: $spacing-3 }
+.p-r4 { padding-right: $spacing-4 }
+.p-r5 { padding-right: $spacing-5 }
+.p-r6 { padding-right: $spacing-6 }
+
+.p-x1 { padding-left: $spacing-1; padding-right: $spacing-1 }
+.p-x2 { padding-left: $spacing-2; padding-right: $spacing-2 }
+.p-x3 { padding-left: $spacing-3; padding-right: $spacing-3 }
+.p-x4 { padding-left: $spacing-4; padding-right: $spacing-4 }
+.p-x5 { padding-left: $spacing-5; padding-right: $spacing-5 }
+.p-x6 { padding-left: $spacing-6; padding-right: $spacing-6 }
+
+.p-y1 { padding-top: $spacing-1; padding-bottom: $spacing-1 }
+.p-y2 { padding-top: $spacing-2; padding-bottom: $spacing-2 }
+.p-y3 { padding-top: $spacing-3; padding-bottom: $spacing-3 }
+.p-y4 { padding-top: $spacing-4; padding-bottom: $spacing-4 }
+.p-y5 { padding-top: $spacing-5; padding-bottom: $spacing-5 }
+.p-y6 { padding-top: $spacing-6; padding-bottom: $spacing-6 }
+
+// MQ variants
+
+.p-md-y6 {
+	@include md {
+		padding-top: $spacing-6; padding-bottom: $spacing-6
+	}
+}

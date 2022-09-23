@@ -1,0 +1,135 @@
+@import "token/token";
+
+.layout {
+	max-width: 100%;
+
+	margin-left: auto;
+	margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+
+	@include sm {
+	    padding-left: $spacing;
+	    padding-right: $spacing;		
+	}
+	@include md {
+	    padding-left: 2 * $spacing;
+	    padding-right: 2 * $spacing;
+		max-width: $wrapper-md;
+	}
+	@include lg{
+		max-width: $wrapper-lg;
+	}
+}
+
+@mixin gr-item($a, $b) {
+    padding-left: $spacing-4;
+    padding-right: $spacing-4;
+    flex-basis: ($a/$b * 100%);
+    max-width: ($a/$b * 100%);
+}
+
+.layout-nested {
+	margin-left: -40px;
+	margin-right: -40px;
+}
+
+.layout-1 {
+    @include gr-item(1,1);
+}
+
+.layout-1-2 {
+    @include gr-item(1,2);	
+}
+
+.layout-1-3 {
+    @include gr-item(1,3);	
+}
+
+.layout-2-3 {
+    @include gr-item(2,3);	
+}
+
+.layout-1-4 {
+    @include gr-item(1,4);	
+}
+
+.layout-3-4 {
+    @include gr-item(3,4);	
+}
+
+.layout-md-1-4 {
+	@include md {
+    	@include gr-item(1,4);
+	}
+}
+
+.layout-md-3-4 {
+	@include md {
+    	@include gr-item(3,4);
+	}
+}
+
+.layout-md-1-5 {
+	@include md {
+    	@include gr-item(1,5);
+    }	
+}
+
+.layout-md-2-5 {
+	@include md {
+    	@include gr-item(2,5);	
+    }
+}
+
+.layout-md-3-5 {
+	@include md {
+    	@include gr-item(3,5);	
+    }
+}
+
+.layout-md-4-5 {
+	@include md {
+    	@include gr-item(4,5);
+   }	
+}
+
+.layout-md-1-6 {
+	@include md {
+    	@include gr-item(1,6);
+	}
+}
+
+.layout-md-7-12 {
+	@include md {
+    	@include gr-item(7,12);
+	}
+}
+
+.layout-1-12 {
+    @include gr-item(1,12);	
+}
+
+.layout-md-1-2 {
+	@include md {
+	    @include gr-item(1,2);
+	}
+}
+
+.layout-md-1-3 {
+	@include md {
+	    @include gr-item(1,3);
+	}
+}
+
+.layout-md-2-3 {
+	@include md {
+	    @include gr-item(2,3);
+	}
+}
+
+.layout-md-1-4 {
+	@include md {
+	    @include gr-item(1,4);
+	}
+}
