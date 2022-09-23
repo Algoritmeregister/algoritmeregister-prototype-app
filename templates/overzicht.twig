@@ -11,11 +11,21 @@
             </header>
             #}
             <main>
-                <h1 class="default-color" style="padding: 1em; background: #F4FAFF">Projecten <input placeholder="zoeken" style="float: right"></input></h1>
+                <script>
+                    function filterProjects(str) {
+                        var trs = document.getElementsByTagName('tr');
+                        for (var i = 0; i < trs.length; ++i) {
+                            if (trs[i].dataset.filterkeywords) {
+                                trs[i].style.display = trs[i].dataset.filterkeywords.indexOf(str) === -1 ? 'none': 'table-row';
+                            }
+                        }
+                    }
+                </script>
+                <h1 class="default-color" style="padding: 1em; background: #F4FAFF">Projecten <input placeholder="zoeken" style="float: right" onkeyup="filterProjects(this.value)"></input></h1>
                 <table>
                     <tr class="default-color">
-                        <th>Naam</th>
-                        <th>Afdeling</th>
+                        <th>Project</th>
+                        <th>Programma</th><!-- FIXME from config -->
                         <th>Herziening</th>
                         <th>Status</th>
                         <th>Type</th>
@@ -23,7 +33,7 @@
                         <th>Schema</th>
                     </tr>
                     {% for item in items %}
-                        <tr>
+                        <tr data-filterKeywords="{{ item.name }}, {{ item.department }}">
                             <td><a href="/project/{{ item.id }}{% if token %}?token={{ token }}{% endif %}">{{ item.name | default("(geen naam)") }}</a></td>
                             <td>{{ item.department }}</td>
                             <td><div class="warning-icon">!</div> {{ item.revision_date }}</td>
