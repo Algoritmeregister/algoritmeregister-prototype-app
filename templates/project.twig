@@ -17,8 +17,9 @@
                 <a class="button" style="background: #4D80E2; float: right; margin: 1em" href="">bewerken</a>
                 <b>Naam</b>: {{ title }}<br>
                 <b>Afdeling</b>: {{ department }}<br>
-                <b>Contact</b>: {{ contact_email }}<br>
+                <b>Contact</b>: {{ contact_name }} (<a href="mailto:{{ contact_email }}">{{ contact_email }}</a>)<br>
                 <b>Openbaar</b>: ja<br>
+                <b>json</b>: <a href="{{ uri }}" target="_blank">.json data</a>
             </div>
 
             <div>
