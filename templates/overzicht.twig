@@ -33,7 +33,7 @@
                         <th>Schema</th>
                     </tr>
                     {% for item in items %}
-                        <tr data-filterKeywords="{{ item.name }}, {{ item.department }}">
+                        <tr data-filterKeywords="{{ item.name }}, {{ item.department }}, {{ item.schema }}">
                             <td><a href="/project/{{ item.id }}{% if token %}?token={{ token }}{% endif %}">{{ item.name | default("(geen naam)") }}</a></td>
                             <td>{{ item.department }}</td>
                             <td><div class="warning-icon">!</div> {{ item.revision_date }}</td>
