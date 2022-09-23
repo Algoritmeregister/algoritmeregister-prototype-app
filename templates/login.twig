@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    {% include "head.twig" %}
+    <body>
+        <div class="default-background" style="background: #eee">
+            {% include 'nav.twig' with {'disablelinks': true} %}
+            <form method="GET" action="/">
+            <input type="hidden" name="token" value="12345">
+            <label>Gebruikersnaam<br>
+            <input></label><br>
+            <label>Wachtwoord<br>
+            <input></label><br>
+            <button>Inloggen</button>
+            </form>
+            <a href="">wachtwoord vergeten?</a>
+        </div>
+        {% include "footer.twig" %}
+    </body>
+</html>

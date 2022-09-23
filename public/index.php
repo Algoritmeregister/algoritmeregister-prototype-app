@@ -19,6 +19,11 @@ $app->add(TwigMiddleware::create($app, $twig));
 
 $algoritmeregister = new \Tiltshift\Algoritmeregister\ApiClient($config["api-url"]);
 
+$app->get('/login', function (Request $request, Response $response, $args) use ($algoritmeregister) {
+    $view = Twig::fromRequest($request);
+    return $view->render($response, 'login.twig', []);
+});
+
 $app->get('/', function (Request $request, Response $response, $args) use ($algoritmeregister) {
     $token = $request->getQueryParams()["token"];
     $view = Twig::fromRequest($request);

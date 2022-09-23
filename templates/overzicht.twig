@@ -4,14 +4,14 @@
     <body>
         <div class="default-background">
             {% include 'nav.twig' %}
+            {#
             <header class="default-color content-header">
                 <h1>Algoritmeregister</h1>
                 {% include "projectomschrijving.twig" %}
-                {% if token %}
-                <p><a href="/aanmelden?token={{ token }}"><span class="warning-icon">+</span> Algoritmische toepassing aanmelden</a></p>
-                {% endif %}
             </header>
+            #}
             <main>
+                <h1 class="default-color" style="padding: 1em; background: #F4FAFF">Projecten <input placeholder="zoeken" style="float: right"></input></h1>
                 <table>
                     <tr class="default-color">
                         <th>Naam</th>
@@ -36,7 +36,11 @@
                         </tr>
                     {% endfor %}
                    	<tr>
-                        <td colspan="7" style="text-align: right"><a class="button" href="{{ csvExportUrl }}">CSV exporteren</a></td>
+                        <td colspan="8" style="text-align: right">
+                            {% if token %}
+                                <a class="button" href="/aanmelden?token={{ token }}" style="background: #4D80E2">Algoritmische toepassing aanmelden</a>
+                            {% endif %}
+                            <a class="button" href="{{ csvExportUrl }}">CSV exporteren</a></td>
                     </tr> 
                 </table>
             </main>
