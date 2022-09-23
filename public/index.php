@@ -85,6 +85,28 @@ $app->post('/toevoegen', function (Request $request, Response $response, $args) 
     return $response->withHeader("Location", "/details/{$id}")->withStatus(303);
 });
 
+$app->get('/project/{id}', function (Request $request, Response $response, $args) use ($algoritmeregister) {
+    $view = Twig::fromRequest($request);
+    $id = $args['id'];
+    $token = $request->getQueryParams()["token"];
+    $toepassing = $algoritmeregister->readToepassing($id);
+    $schema = json_decode(file_get_contents($toepassing["schema"]), true);
+    $grouped = [];
+    foreach ($schema["properties"] as $property => $details) {
+        if ($toepassing[$property]) $details["value"] = $toepassing[$property];
+        $grouped[$details["category"]][] = $details;
+    }
+    return $view->render($response, 'project.twig', [
+        'id' => $id,
+        'token' => $token,
+        'title' => $toepassing["name"],
+        'department' => $toepassing["department"],
+        'contact_email' => $toepassing["contact_email"],
+        'description' => $toepassing["description_short"],
+        'grouped' => $grouped
+    ]);
+});
+
 $app->get('/details/{id}', function (Request $request, Response $response, $args) use ($algoritmeregister) {
     $view = Twig::fromRequest($request);
     $id = $args['id'];
