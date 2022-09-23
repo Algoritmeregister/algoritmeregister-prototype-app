@@ -48,7 +48,7 @@ $font-weight-bold: 700;
 
 @mixin text-h3 {
   font-family: $stack-1;
-  font-weight: $font-weight-bold;
+  font-weight: $font-weight-normal;
   font-size: 18px;
   line-height: 26px;
   @include md {
@@ -59,7 +59,7 @@ $font-weight-bold: 700;
 
 @mixin text-h4 {
   font-family: $stack-1;
-  font-weight: $font-weight-bold;
+  font-weight: $font-weight-normal;
   font-size: 16px;
   line-height: 24px;
   @include md {
