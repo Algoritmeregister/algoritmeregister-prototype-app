@@ -7,7 +7,9 @@
 		<link rel="stylesheet" href="/css/compile">
 	</head>
 	<body>
-		{% include 'elements/layout-overlay/layout-overlay.twig' %}
+		{% include 'elements/layout-overlay/layout-overlay.twig' with {variant: ''} %}
+		{% block header %}{% include 'elements/header/header.twig' %}{% endblock %}
 		{% block main %}{% endblock %}
+		{% block footer %}{% include 'elements/footer/footer.twig' %}{% endblock %}
 	</body>
 </html>

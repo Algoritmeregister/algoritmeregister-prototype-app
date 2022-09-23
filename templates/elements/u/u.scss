@@ -113,6 +113,10 @@
 	border: 1px solid;
 }
 
+.u-border-2 {
+	border: 2px solid;
+}
+
 .u-border-b {
 	border-bottom: 2px solid;
 }
@@ -121,7 +125,19 @@
 	border-color: $color-0;
 }
 
+.u-border-color-1 {
+	border-color: $color-0;
+}
+
+.u-border-color-2 {
+	border-color: $color-2;
+}
+
 .u-border-color-3 {
 	border-color: $color-3;
+}
+
+.u-min-height-80 {
+	min-height: 80vh;
 }
 
