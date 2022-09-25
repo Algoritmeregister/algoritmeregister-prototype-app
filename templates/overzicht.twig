@@ -26,21 +26,19 @@
                     <tr class="default-color">
                         <th>Project</th>
                         <th>Programma</th><!-- FIXME from config -->
-                        <th>Herziening</th>
-                        <th>Status</th>
-                        <th>Type</th>
                         <th>Categorie</th>
-                        <th>Schema</th>
+                        <th>Status</th>
+                        <th>Herziening</th>
+                        <th>Gepubliceerd</th>
                     </tr>
                     {% for item in items %}
                         <tr data-filterKeywords="{{ item.name }}, {{ item.department }}, {{ item.schema }}">
                             <td><a href="/project/{{ item.id }}{% if token %}?token={{ token }}{% endif %}">{{ item.name | default("(geen naam)") }}</a></td>
                             <td>{{ item.department }}</td>
-                            <td><div class="warning-icon">!</div> {{ item.revision_date }}</td>
-                            <td>{{ item.status }}</td>
-                            <td>{{ item.type }}</td>
                             <td>{{ item.category }}</td>
-                            <td>{{ item.schema }}</td>
+                            <td>{{ item.status }}</td>
+                            <td><div class="warning-icon">!</div> {{ item.revision_date }}</td>
+                            <td>{% if random(99) < 50 %}<div style="margin-left: 2.4em; width: 1em; height: 1em; background: #4D80E2; color: white; line-height: 1em; text-align: center; border-radius: 2px">•</div>{% endif %}</td>
                         </tr>
                     {% endfor %}
                    	<tr>
