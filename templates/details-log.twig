@@ -6,7 +6,7 @@
             {% include 'nav.twig' %}
 
             <p style="margin: 20px">
-                <a href="/project/{{id}}{% if token %}?token={{ token }}{% endif %}">← terug naar het register</a>
+                <a href="/project/{{id}}{% if token %}?token={{ token }}{% endif %}">← terug naar project</a>
             </p>
 
             {% include "details-header.twig" with {'tab': 'updates'} %}

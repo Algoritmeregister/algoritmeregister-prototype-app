@@ -6,11 +6,11 @@
             {% include 'nav.twig' %}
 
             <p style="margin: 20px">
-                <a href="/{% if token %}?token={{ token }}{% endif %}">← terug naar het register</a>
+                <a href="/{% if token %}?token={{ token }}{% endif %}">← terug naar projectenoverzicht</a>
             </p>
 
             <header class="default-color content-header">
-                <h1>Projectinformatie</h1>
+                <h1>Project: {{ title }}</h1>
             </header>
 
             <div class="sheet">
