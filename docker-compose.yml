@@ -11,8 +11,8 @@ services:
             - 8080:8080
         volumes:
             - .:/var/www
-        networks:
-            - algoritmeregister-prototype-app_default
-networks:
-    algoritmeregister-prototype-app_default:
-        external: true
+#        networks:
+#            - algoritmeregister-prototype-app_default
+#networks:
+#    algoritmeregister-prototype-app_default:
+#        external: true
