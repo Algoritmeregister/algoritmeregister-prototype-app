@@ -195,7 +195,7 @@ $app->post('/acties/verwijderen/{id}', function (Request $request, Response $res
     return $response->withHeader("Location", "/")->withStatus(204);
 });
 
-$app->get('/css/compile', function (Request $request, Response $response, $args) use ($algoritmeregister) {
+$app->get('/scss/compile', function (Request $request, Response $response, $args) use ($algoritmeregister) {
 
     $compiler = new Compiler();
     $compiler->setImportPaths(__DIR__ . '/../templates/elements');
